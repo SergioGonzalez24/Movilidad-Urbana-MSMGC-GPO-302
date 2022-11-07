@@ -1,9 +1,15 @@
 # Movilidad-Urbana-MSMGC-GPO-302
 
+<p style="text-align: center;">
 
-    ![UK_Roundabout_8_Cars](https://user-images.githubusercontent.com/84719490/199857181-19836d64-8bf2-42ca-9143-e3815f6295ed.gif)
+![1667857505776](image/README/1667857505776.png)
 
-### Integrantes 
+</p>
+
+
+
+
+### Integrantes
 
 - Sergio Manuel Gonzalez Vargas - A01745446
 - Gilberto André García Gaytán - A01753176
