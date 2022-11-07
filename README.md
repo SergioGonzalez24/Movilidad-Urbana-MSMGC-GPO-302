@@ -1,5 +1,6 @@
 # Movilidad-Urbana-MSMGC-GPO-302
 
+<<<<<<< HEAD
 <p style="text-align: center;">
 
 ![1667857505776](image/README/1667857505776.png)
