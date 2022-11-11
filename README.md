@@ -18,7 +18,9 @@
 
 ### Liga de Archivos en Google Drive
 
-https://drive.google.com/drive/folders/1z2ETYn4h0Xb2oYKgaC0iAb2sPr4sbUAe?usp=sharing
+#### <a href="https://drive.google.com/drive/folders/1z2ETYn4h0Xb2oYKgaC0iAb2sPr4sbUAe?usp=sharing"> Carpeta de Documentos </a>
+- <a href="https://docs.google.com/document/d/1W8bfAxrFTsTYDl1AzPV21B87nASKfoY1PGL4GE5tWhA/edit?usp=sharing"> Revision 1 </a>
+
 
 
 ### Problematica
