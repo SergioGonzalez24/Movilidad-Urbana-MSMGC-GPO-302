@@ -1,0 +1,138 @@
+newmtl Brushed_gold0
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold0.jpg
+newmtl BlackInodizedAl0
+Ka 0 0 0
+Ns 3.47873
+Ks 1 1 1
+Kd 0.198039 0.198039 0.198039
+map_Kd BlackInodizedAl0_1.jpg
+newmtl Brushed_gold1
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold1_2.jpg
+newmtl Brushed_gold2
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold2_3.jpg
+newmtl Brushed_gold3
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold3_4.jpg
+newmtl Brushed_gold4
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold4_5.jpg
+newmtl Brushed_gold5
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold5_6.jpg
+newmtl Brushed_gold6
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold6_7.jpg
+newmtl Brushed_gold7
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold7_8.jpg
+newmtl BlackInodizedAl1
+Ka 0 0 0
+Ns 3.47873
+Ks 1 1 1
+Kd 0.198039 0.198039 0.198039
+map_Kd BlackInodizedAl1_9.jpg
+newmtl Brushed_gold8
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold8_10.jpg
+newmtl Brushed_bronze
+Ka 0 0 0
+Ns 4.48169
+Ks 0.435294 1 0.243137
+Kd 0.87451 0.517647 0.156863
+map_Kd Brushed_bronze_11.jpg
+newmtl BlackInodizedAl2
+Ka 0 0 0
+Ns 3.47873
+Ks 1 1 1
+Kd 0.198039 0.198039 0.198039
+map_Kd BlackInodizedAl2_12.jpg
+newmtl C_3P0_EYE_LIGHT
+Ka 0 0 0
+Ns 1
+Ks 0.92549 0.643137 0.0941176
+Kd 0.92549 0.643137 0.0941176
+map_Kd C_3P0_EYE_LIGHT_13.jpg
+newmtl Brushed_gold9
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold9_14.jpg
+newmtl C_3P0_EYE_LIGHT2
+Ka 0 0 0
+Ns 1
+Ks 1 1 1
+Kd 1 1 1
+map_Kd C_3P0_EYE_LIGHT2_15.jpg
+newmtl Brushed_gold10
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold10_16.jpg
+newmtl BlackInodizedAl3
+Ka 0 0 0
+Ns 3.47873
+Ks 1 1 1
+Kd 0.198039 0.198039 0.198039
+map_Kd BlackInodizedAl3_17.jpg
+newmtl Brushed_gold11
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold11_18.jpg
+newmtl Brushed_gold12
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold12_19.jpg
+newmtl Brushed_gold13
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold13_20.jpg
+newmtl Brushed_gold14
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold14_21.jpg
+newmtl Brushed_gold15
+Ka 0 0 0
+Ns 6.04965
+Ks 1 0.717647 0.133333
+Kd 0.917647 0.666667 0
+map_Kd Brushed_gold15_22.jpg
