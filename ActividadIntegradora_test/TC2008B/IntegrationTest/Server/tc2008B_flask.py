@@ -32,7 +32,7 @@ width = 30
 height = 30
 
 # Set the number of agents here:
-flock = []
+flock = [] #type: ignore
 
 app = Flask("Boids example")
 
