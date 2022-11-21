@@ -302,7 +302,6 @@ public class AgentController : MonoBehaviour
         }
     }
 /// It updates the simulation.
-
     IEnumerator UpdateSimulation()
     {
         UnityWebRequest www = UnityWebRequest.Get(serverUrl + updateEndpoint);
