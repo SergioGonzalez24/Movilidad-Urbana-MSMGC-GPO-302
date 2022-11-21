@@ -22,6 +22,28 @@ from agents import *
 # ----------------------------------------------------------
 
 
+def compute_agent_moves(model):
+    """
+    It counts the number of moves made by all Roomba agents in the model
+    :param model: the model object
+    :return: The number of movements of all the Roomba agents.
+    """
+    movements = 0
+    for agent in model.schedule.agents:
+        if isinstance(agent, Robot_Agent):
+            movements += agent.moves
+    return movements
+
+
+def tiempo(model):
+    """
+    It returns the current time of the model
+    :param model: the model object
+    :return: The time of the model.
+    """
+    return model.schedule.time
+
+
 class IntegradoraModel(Model):
     def __init__(self, width, height, NAgents):
         """
@@ -96,6 +118,9 @@ class IntegradoraModel(Model):
         self.datacollector = DataCollector(
             agent_reporters={"Moves": "moves"})
         self.time = 0
+        self.datacollector = DataCollector(
+            model_reporters={"Movimientos": compute_agent_moves,
+                             "Tiempo": tiempo})
 
     def step(self):
         """

@@ -7,6 +7,8 @@ from mesa.visualization.modules import CanvasGrid
 # Importing the ModularServer class from the
 # mesa.visualization.ModularVisualization module.
 from mesa.visualization.ModularVisualization import ModularServer
+# Importing the ChartModule class from the mesa.visualization.modules module.
+from mesa.visualization.modules import ChartModule
 
 # ----------------------------------------------------------
 # Actividad Integradora server_mesa.py
@@ -61,10 +63,24 @@ width = 15
 height = 15
 Agentes = 30
 grid = CanvasGrid(agent_portrayal, width, height, 750, 750)
+compute_agent_moves = ChartModule(
+        [{
+            "Label": "Movimientos",
+            "Color": "Green",
+        }],
+        data_collector_name='datacollector'
+            )
+tiempo = ChartModule(
+        [{
+            "Label": "Tiempo",
+            "Color": "Purple"
+        }],
+        data_collector_name='datacollector'
+            )
 # Creating a server that will run the IntegradoraModel with the grid and the
 # number of agents.
 server = ModularServer(IntegradoraModel,
-                       [grid],
+                       [grid, tiempo, compute_agent_moves],
                        "Actividad Integradora",
                        {"width": width, "height": height, "NAgents": Agentes})
 # Setting the port to 8521 and launching the server.
