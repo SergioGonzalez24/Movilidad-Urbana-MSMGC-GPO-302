@@ -234,6 +234,7 @@ class Robot_Agent(Agent):
         the path taken by the agent:return: the closest pallet to the
         last position of the neighbor.
         """
+        
         x1, y1 = neighbor[-1]
         min_distance = float('inf')
         tarima_cercana = 0

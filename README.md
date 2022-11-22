@@ -1,4 +1,3 @@
-# ESTA BRANCH ES DE TRABAJO
 
 # Movilidad-Urbana-MSMGC-GPO-302
 
