@@ -29,11 +29,11 @@ def agent_portrayal(agent):
     :param agent: the agent object
     :return: The portrayal of the agent.
     """
-    
     # box 0
     # robotagent 1
     # Creating a dictionary with the properties of the agent.
-    portrayal = {"Shape": "circle", "Filled": "true", "Layer": 0, "Color": "red", "r": 0.5}
+    portrayal = {"Shape": "circle", "Filled": "true", "Layer": 0,
+                 "Color": "red", "r": 0.5}
     # Checking if the agent's color is 1, if it is, it will set the color
     # to red and the layer to 0.
     if agent.color == 1:
@@ -41,7 +41,6 @@ def agent_portrayal(agent):
         portrayal["Shape"] = "agente.png"
         # portrayal["Color"] = "red"
         portrayal["Layer"] = 0
-        
     # Setting the color of the agent to yellow and the layer to 0.
     elif agent.color == 2:
         portrayal["Color"] = "yellow"
@@ -91,5 +90,3 @@ server = ModularServer(IntegradoraModel,
 # Setting the port to 8521 and launching the server.
 server.port = 8521
 server.launch()
-
-
