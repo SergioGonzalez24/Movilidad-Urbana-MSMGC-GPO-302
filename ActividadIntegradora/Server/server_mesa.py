@@ -1,7 +1,7 @@
 # Importing all the classes from the agents.py file.
 from agents import *
 # Importing all the classes from the model.py file.
-from model import *
+from model import IntegradoraModel
 # Importing the CanvasGrid class from the mesa.visualization.modules module.
 from mesa.visualization.modules import CanvasGrid
 # Importing the ModularServer class from the
@@ -29,16 +29,17 @@ def agent_portrayal(agent):
     :param agent: the agent object
     :return: The portrayal of the agent.
     """
+    # box 0
+    # robotagent 1
     # Creating a dictionary with the properties of the agent.
-    portrayal = {"Shape": "circle",
-                 "Filled": "true",
-                 "Layer": 0,
-                 "Color": "red",
-                 "r": 0.5}
+    portrayal = {"Shape": "circle", "Filled": "true", "Layer": 0,
+                 "Color": "red", "r": 0.5}
     # Checking if the agent's color is 1, if it is, it will set the color
     # to red and the layer to 0.
     if agent.color == 1:
-        portrayal["Shape"] = "robot.jpg"
+        # return {"Shape": "robot.png", "Layer": 0}
+        portrayal["Shape"] = "agente.png"
+        # portrayal["Color"] = "red"
         portrayal["Layer"] = 0
     # Setting the color of the agent to yellow and the layer to 0.
     elif agent.color == 2:
@@ -51,7 +52,9 @@ def agent_portrayal(agent):
         portrayal["r"] = 0.1
     # Setting the color of the agent to blue and the layer to 1.
     else:
-        portrayal["Color"] = "blue"
+        # return {"Shape": "caja.png", "Layer": 0}
+        portrayal["Shape"] = "caja.png"
+        # portrayal["Color"] = "blue"
         portrayal["Layer"] = 1
         portrayal["r"] = 0.1
     # Returning the portrayal of the agent.
@@ -63,6 +66,7 @@ width = 15
 height = 15
 Agentes = 30
 grid = CanvasGrid(agent_portrayal, width, height, 750, 750)
+
 compute_agent_moves = ChartModule(
         [{
             "Label": "Movimientos",
