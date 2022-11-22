@@ -15,3 +15,9 @@ python server_flask.py
 ```
 flask run --host=0.0.0.0 --port=8585
 ```
+
+- Para correr la visualización de mesa:
+
+```
+python server_mesa.py
+```
