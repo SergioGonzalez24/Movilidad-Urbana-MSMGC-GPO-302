@@ -1,0 +1,84 @@
+# Blender MTL File: 'pallete.blend'
+# Material Count: 7
+
+newmtl Prego
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Tabuainferior
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\teste6.png
+map_Bump Textura\\Madeira\\teste6.png
+
+newmtl Tabuasupeiro2
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\teste4.png
+map_Bump Textura\\Madeira\\teste5.png
+
+newmtl Tabuasupeiro2_teste5.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\teste5.png
+map_Bump Textura\\Madeira\\teste5.png
+
+newmtl Tabuasuperior
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\teste4.png
+map_Bump -bm 3.597403 Textura\\Madeira\\teste7.png
+
+newmtl Tabuasuperior_teste5.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\teste5.png
+map_Bump -bm 3.597403 Textura\\Madeira\\teste7.png
+
+newmtl Toco
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Textura\Madeira\NOVAToco.png
+map_Bump Textura\\Madeira\\NOVAToco.png
