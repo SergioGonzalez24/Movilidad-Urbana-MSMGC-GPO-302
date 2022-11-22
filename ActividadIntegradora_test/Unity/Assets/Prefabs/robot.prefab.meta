@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:ActividadIntegradora_test/Unity/Assets/Prefabs/robot.prefab.meta
 guid: 4d14428a5b1a1a442b196cbc763843a6
+=======
+guid: 884a028a0a390c04e85b25551aa5a783
+>>>>>>> c81b19a6465aadb0fa40f61dc63b7ff195f8d0a5:ActividadIntegradora/TC2008B/AgentsVisualization/TrafficVisualization/Assets/Prefabs/robot.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
