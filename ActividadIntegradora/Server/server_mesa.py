@@ -1,7 +1,8 @@
 # Importing all the classes from the agents.py file.
 from agents import *
+from agents import Robot_Agent
 # Importing all the classes from the model.py file.
-from model import IntegradoraModel
+from model import *
 # Importing the CanvasGrid class from the mesa.visualization.modules module.
 from mesa.visualization.modules import CanvasGrid
 # Importing the ModularServer class from the
@@ -38,25 +39,32 @@ def agent_portrayal(agent):
     # to red and the layer to 0.
     if agent.color == 1:
         # return {"Shape": "robot.png", "Layer": 0}
-        portrayal["Shape"] = "agente.png"
+        portrayal["Shape"] = "./ActividadIntegradora/Server/img/agente.png"
         # portrayal["Color"] = "red"
         portrayal["Layer"] = 0
     # Setting the color of the agent to yellow and the layer to 0.
     elif agent.color == 2:
-        portrayal["Color"] = "yellow"
+        portrayal["Shape"] = "./ActividadIntegradora/Server/img/robotCaja.png"
+        # portrayal["Color"] = "yellow"
         portrayal["Layer"] = 0
     # Setting the color of the agent to green and the layer to 1.
     elif agent.color == 3:
+        # portrayal["Shape"] = "./ActividadIntegradora_test/Server/img/acumulacion.png"
         portrayal["Color"] = "green"
         portrayal["Layer"] = 1
         portrayal["r"] = 0.1
     # Setting the color of the agent to blue and the layer to 1.
+        
     else:
         # return {"Shape": "caja.png", "Layer": 0}
-        portrayal["Shape"] = "caja.png"
+        portrayal["Shape"] = "./ActividadIntegradora/Server/img/caja.png"
         # portrayal["Color"] = "blue"
         portrayal["Layer"] = 1
         portrayal["r"] = 0.1
+        
+        # if agent.llenar_stack() > 1:
+        #     portrayal["Shape"] = "./ActividadIntegradora_test/Server/img/acumulacion.png"
+        #     portrayal["Layer"] = 1
     # Returning the portrayal of the agent.
     return portrayal
 
