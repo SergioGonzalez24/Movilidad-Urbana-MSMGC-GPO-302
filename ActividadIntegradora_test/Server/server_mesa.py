@@ -38,7 +38,7 @@ def agent_portrayal(agent):
     # to red and the layer to 0.
     if agent.color == 1:
         # return {"Shape": "robot.png", "Layer": 0}
-        portrayal["Shape"] = "robot.png"
+        portrayal["Shape"] = "agente.png"
         # portrayal["Color"] = "red"
         portrayal["Layer"] = 0
         
