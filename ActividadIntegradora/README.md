@@ -7,7 +7,7 @@
 - Fernando Ortiz Saldaña - A01376737
 - Ricardo Ramírez Condado - A01379299
 - 
-<a href="(https://docs.google.com/document/d/1IZ8TRScMKt0GAUFSHS-wg9wTcwAZ3sTjz8jQtyeuovk/edit?usp=sharing)">  Actividad Integradora </a>
+<a href="https://docs.google.com/document/d/1IZ8TRScMKt0GAUFSHS-wg9wTcwAZ3sTjz8jQtyeuovk/edit?usp=sharing">  Actividad Integradora </a>
 
 ### Problematica
 
