@@ -38,7 +38,7 @@ def agent_portrayal(agent):
     # Checking if the agent's color is 1, if it is, it will set the color
     # to red and the layer to 0.
     if agent.color == 1:
-        portrayal["Color"] = "red"
+        portrayal["Shape"] = "robot.jpg"
         portrayal["Layer"] = 0
     # Setting the color of the agent to yellow and the layer to 0.
     elif agent.color == 2:
