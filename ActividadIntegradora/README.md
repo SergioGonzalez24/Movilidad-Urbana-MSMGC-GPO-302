@@ -10,6 +10,7 @@
 - <a href="https://docs.google.com/document/d/1IZ8TRScMKt0GAUFSHS-wg9wTcwAZ3sTjz8jQtyeuovk/edit?usp=sharing">  Actividad Integradora </a>
 
 ### Problematica
+![robotCaja](https://user-images.githubusercontent.com/84719490/203209304-579d8720-be6e-4534-acf8-ab4f3ae3c264.png)
 
 ¡Felicidades! Eres el orgulloso propietario de 5 robots nuevos y un almacén lleno de cajas. El dueño
 anterior del almacén lo dejó en completo desorden, por lo que depende de tus robots organizar las
