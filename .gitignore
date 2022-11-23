@@ -73,6 +73,6 @@ crashlytics-build.properties
 
 # Otros Ignores
 .DS_Store
-.vscode/*
-.mypy_cache/*
+.vscode
+.mypy_cache
 
