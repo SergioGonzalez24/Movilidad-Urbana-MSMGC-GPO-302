@@ -38,7 +38,7 @@ def agent_portrayal(agent):
 width = 0
 height = 0
 
-with open('./Revision3/trafficBase/2022_base.txt') as baseFile: # Cambiar la ruta del archivo 
+with open('./trafficBase/2022_base.txt') as baseFile: # Cambiar la ruta del archivo 
     lines = baseFile.readlines()
     width = len(lines[0])-1
     height = len(lines)

@@ -12,11 +12,11 @@ class RandomModel(Model):
     """
     def __init__(self, N):
 
-        dataDictionary = json.load(open("./Revision3/trafficBase/mapDictionary.json"))
+        dataDictionary = json.load(open("./trafficBase/mapDictionary.json"))
 
         self.traffic_lights = []
 
-        with open('./Revision3/trafficBase/2022_base.txt') as baseFile:
+        with open('./trafficBase/2022_base.txt') as baseFile:
             lines = baseFile.readlines()
             self.width = len(lines[0])-1
             self.height = len(lines)
