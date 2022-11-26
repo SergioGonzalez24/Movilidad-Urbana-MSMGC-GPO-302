@@ -20,7 +20,7 @@ def agent_portrayal(agent):
         portrayal["Layer"] = 0
 
     if (isinstance(agent, Traffic_Light)):
-        portrayal["Shape"] = "./Revision3/revision3_test/img/rojo.png" if not agent.state else "./Revision3/revision3_test/img/verde.png"
+        portrayal["Shape"] = "./rojo.png" if not agent.state else "./verde.png"
         portrayal["Layer"] = 0
         portrayal["w"] = 0.8
         portrayal["h"] = 0.8
@@ -32,7 +32,7 @@ def agent_portrayal(agent):
         portrayal["h"] = 0.8
 
     if (isinstance(agent, Car)):
-        portrayal["Shape"] = "./Revision3/revision3_test/img/cuchao.png" 
+        portrayal["Shape"] = "./cuchao.png" 
         portrayal["Layer"] = 1
         
 
@@ -41,7 +41,7 @@ def agent_portrayal(agent):
 width = 0
 height = 0
 
-with open('./Revision3/revision3_test/base.txt') as baseFile:
+with open('base.txt') as baseFile:
     lines = baseFile.readlines()
     width = len(lines[0])-1
     height = len(lines)
