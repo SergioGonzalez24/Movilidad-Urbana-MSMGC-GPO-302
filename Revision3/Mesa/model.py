@@ -13,7 +13,6 @@ class TrafficModel(Model):
         Class initializer (constructor) to create a new Robot agent
         ● Parameters: 
             N: Number of initial cars randomly distributes
-            carSpan: Number of steps a new car has to wait to appear
             lightSpan: Number of steps the traffic light will remain on each color
         ● Return: None
         """
@@ -47,6 +46,8 @@ class TrafficModel(Model):
                         agent = Destination(f"d{r*self.width+c}", self)
                         self.grid.place_agent(agent, (c, self.height - r - 1))
                         self.destCoords.append((c, self.height - r - 1))
+                        
+                    # Map Intersections
                     elif col == '.':
                         agent = Road(f"r{r*self.width+c}", self, dataDictionary[col])
                         self.grid.place_agent(agent, (c, self.height - r - 1))
@@ -94,7 +95,8 @@ class TrafficModel(Model):
         
         self.carsInMap =  len([agent for agent in self.schedule.agents if isinstance(agent, Car)])
         
-        # Generates a new car when a car reaches its destination
+        # Generates a new car when a car reaches its destination to mantain the same number of cars
+        # in the simulation
         if(self.carsInMap < self.num_agents):
             carAgent = Car(self.carIDs, self, choice(self.destCoords))
             self.grid.place_agent(carAgent, (choice([0, self.width-1]), choice([0, self.height-1])))
