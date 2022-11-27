@@ -77,6 +77,5 @@ public class CityMaker : MonoBehaviour
                 y -= 1;
             }
         }
-
     }
 }
