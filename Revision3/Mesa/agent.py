@@ -22,6 +22,8 @@ class Car(Agent):
         # positions and its decisions
         self.takenRoute = [[],[]]
         self.numOfCars = self.model.num_agents
+        
+        self.colision = False
 
     def step(self):
         """
@@ -30,9 +32,8 @@ class Car(Agent):
             self: Reference to class' instance
         ● Return: None (Return is used to avoid execution of some sections of the code)
         """
-        
-        print('Car', self.unique_id, 'is heading to', self.destination)
-        
+        # print("Car", self.unique_id, "is at", self.pos)
+        # print("Car", self.unique_id, "is heading to", self.destination)
         
         possibleSteps = self.model.grid.get_neighborhood(
             self.pos,
@@ -51,7 +52,7 @@ class Car(Agent):
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)
             self.numOfCars-= 1
-            print("Car", self.unique_id, "has reached its destination")
+            # print("Car", self.unique_id, "has reached its destination")
             return
         
         # If it's already in a Destination, then quits
@@ -66,21 +67,20 @@ class Car(Agent):
     
             # Checks if is on the road (which it is, but is basically to differentiate from the Traffic Light cell)
             if Road == posStepsType[currPos][0]: 
-
+                
                 # Checks if the car is on a "decision section" (intersection)
                 if posStepsCont[currPos][0].direction == "Omni":
-                    print('Omni')
                     futurePos = possibleSteps[motion[self.tmpDir]]
-                    
-                    # REVISAR LOGICA PARA EVITAR CHOQUES
-                    
+                     
+                               
                     # If the car is moving horizontally then it moves to the possible next coordinates given that axis and direction
                     if self.tmpDir == "Left" or self.tmpDir == "Right":
                         self.makeDecision([(futurePos[0], futurePos[1]+1), futurePos, (futurePos[0], futurePos[1]-1), (self.pos[0], self.pos[1]+1), (self.pos[0], self.pos[1]-1)], getConTypeOfCell, 1)
-                        
                     # If the car is moving vertically then it moves to the possible next coordinates given that axis and direction
                     elif self.tmpDir == "Up" or self.tmpDir == "Down":
                         self.makeDecision([(futurePos[0]+1, futurePos[1]), futurePos, (futurePos[0]-1, futurePos[1]), (self.pos[0]+1, self.pos[1]), (self.pos[0]-1, self.pos[1])], getConTypeOfCell, 0)
+                        
+                 
                 else:
                     futurePos = motion[posStepsCont[currPos][0].direction]
                     # If there's a traffic light in front
@@ -106,7 +106,9 @@ class Car(Agent):
                     self.isStop = False
                 else:
                     self.isStop = True
-
+                    
+       
+                    
     def getMotion(self, posSteps):
         """
         Method used to determine the index of the neighborhood list depending on the direction
@@ -127,7 +129,7 @@ class Car(Agent):
                 motion["Up"] = c
             elif posSteps[c][0] == self.pos[0] and posSteps[c][1] == self.pos[1]-1:
                 motion["Down"] = c
-            #print('motion', motion)
+            
         return motion
 
     def getBestMove(self, posDirs, getConTypeOfCell, axis):
@@ -194,7 +196,7 @@ class Car(Agent):
         """
         # Gets the best option from all the possibilities
         dirIndex = self.getBestMove(posDirs, getConTypeOfCell, axis)
-        print('dirIndex', dirIndex)
+        # print('dirIndex', dirIndex)
         if Car not in getConTypeOfCell(posDirs[dirIndex]):
             # If it's the car's first time on that intersection it keeps a log of that and the decision (coordinate where it went next) it made
             if self.pos not in self.takenRoute[0]:

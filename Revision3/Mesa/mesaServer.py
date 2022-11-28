@@ -14,6 +14,7 @@ def agent_portrayal(agent):
         portrayal["Color"] = "grey"
         portrayal["Layer"] = 0
         portrayal["text"] = agent.pos
+        # portrayal["text"] = agent.direction
         portrayal["text_color"] = "black"
 
         
@@ -58,5 +59,5 @@ grid = CanvasGrid(agent_portrayal, width, height, 900, 900)
 
 server = ModularServer(TrafficModel, [grid], "Traffic Base", model_params)
                        
-server.port = 8521 # The default
+server.port = 8521 
 server.launch()

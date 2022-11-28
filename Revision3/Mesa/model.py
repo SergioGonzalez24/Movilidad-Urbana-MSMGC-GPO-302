@@ -90,7 +90,7 @@ class TrafficModel(Model):
                 for agent in agents:
                     if isinstance(agent, Traffic_Light):
                         agent.state = not agent.state
-        print(self.schedule.steps)
+        # print(self.schedule.steps)
         
         
         self.carsInMap =  len([agent for agent in self.schedule.agents if isinstance(agent, Car)])
