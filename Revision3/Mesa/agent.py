@@ -284,7 +284,8 @@ class Semaforo(Agent):
             unique_id: The agent's ID
             model: Model reference for the agent
             state: Whether the traffic light is green or red
-            timeToChange: After how many step should the traffic light change color 
+            timeToChange: After how many step should the traffic light change 
+            color
         """
         self.state = state
         self.timeToChange = timeToChange

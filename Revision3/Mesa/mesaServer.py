@@ -103,7 +103,8 @@ tiempo = ChartModule(
         data_collector_name='datacollector'
             )
 
-# Creating a server that will run the model MapaModel, with the grid, tiempo and compute_agent_moves
+# Creating a server that will run the model MapaModel, with the grid, tiempo 
+# and compute_agent_moves
 # charts, with the name "Traffic Base" and with the model_params parameters.
 server = ModularServer(MapaModel, [grid, tiempo, compute_agent_moves],
                        "Traffic Base", model_params)

@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 import os
 
 # ----------------------------------------------------------
-# Revisión 3 - 60% -- server_flask.py
+# Revisión 3 -- 60% -- server_flask.py
 #
 # Date: 28-Nov-2022
 # Authors:

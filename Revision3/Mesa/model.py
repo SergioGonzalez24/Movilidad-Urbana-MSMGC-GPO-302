@@ -68,7 +68,8 @@ class MapaModel(Model):
             for r, row in enumerate(lines):
                 # Iterating through the lines of the file.
                 for c, columna in enumerate(row):
-                    # Creating a new agent of type Ruta66 and placing it in the grid.
+                    # Creating a new agent of type Ruta66 and placing it in 
+                    # the grid.
                     if columna in ["v", "^", ">", "<"]:
                         agent = Ruta66(f"r{r*self.width+c}", self, Diccionario[columna])
                         self.grid.place_agent(agent, (c, self.height - r - 1))
