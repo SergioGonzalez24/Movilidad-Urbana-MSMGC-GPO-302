@@ -1,7 +1,7 @@
 from mesa import Agent
 from random import *
 
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 # Revisión 3 - 60% -- agent.py
 #
 # Date: 28-Nov-2022
@@ -10,7 +10,7 @@ from random import *
 #           Gilberto André García Gaytán - A01753176
 #           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 
 class Mcqueen(Agent):
     def __init__(self, uniqueID, model, destPos):

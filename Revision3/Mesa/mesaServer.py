@@ -9,7 +9,7 @@ from mesa.visualization.ModularVisualization import ModularServer
 # Importing the ChartModule class from the mesa.visualization.modules module.
 from mesa.visualization.modules import ChartModule
 
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 # Revisión 3 - 60% -- mesaServer.py
 #
 # Date: 28-Nov-2022
@@ -18,7 +18,7 @@ from mesa.visualization.modules import ChartModule
 #           Gilberto André García Gaytán - A01753176
 #           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 
 
 def agent_portrayal(agent):

@@ -7,7 +7,7 @@ from agent import *
 import json
 from random import choice, randrange
 
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 # Revisión 3 - 60% -- model.py
 #
 # Date: 28-Nov-2022
@@ -16,7 +16,7 @@ from random import choice, randrange
 #           Gilberto André García Gaytán - A01753176
 #           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
-# ----------------------------------------------------------
+# -----------------------------------------------------------
 
 
 def compute_agent_moves(model):

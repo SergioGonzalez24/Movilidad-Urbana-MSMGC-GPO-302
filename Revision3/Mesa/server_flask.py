@@ -4,7 +4,7 @@ from agent import *
 from flask import Flask, request, jsonify
 import os
 
-# ----------------------------------------------------------
+# ------------------------------------------------------------
 # Revisión 3 -- 60% -- server_flask.py
 #
 # Date: 28-Nov-2022
@@ -13,7 +13,7 @@ import os
 #           Gilberto André García Gaytán - A01753176
 #           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
-# ----------------------------------------------------------
+# ------------------------------------------------------------
 
 # Defining the variables that will be used in the code.
 carsNumber = 20
