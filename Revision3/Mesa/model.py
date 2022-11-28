@@ -20,9 +20,9 @@ class TrafficModel(Model):
         self.carIDs = 0
         self.lightSpan = lightSpan
         self.carsInMap = 0
-        dataDictionary = json.load(open("mapDictionary.json"))
+        dataDictionary = json.load(open("./Revision3/Mesa/Docs/mapDictionary.json"))
 
-        with open('2022_base.txt') as baseFile:
+        with open('./Revision3/Mesa/Docs/2022_base.txt') as baseFile:
             lines = baseFile.readlines()
             self.width = len(lines[0])-1
             self.height = len(lines)

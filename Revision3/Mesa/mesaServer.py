@@ -8,25 +8,27 @@ def agent_portrayal(agent):
 
     portrayal = {"Shape": "rect",
                  "Filled": "true", 
-                 "w": 1, "h": 1, 
-                 "Layer": 0}
+                 "w": 1, "h": 1}
 
     if (isinstance(agent, Road)):
         portrayal["Color"] = "grey"
         portrayal["Layer"] = 0
         portrayal["text"] = agent.pos
         portrayal["text_color"] = "black"
-        portrayal["text_size"] = 1
+
         
     if (isinstance(agent, Destination)):
-        portrayal["Color"] = "lightgreen"
+        portrayal["Shape"] = "./Revision3/Mesa/img/parking.png"
         portrayal["Layer"] = 0
         portrayal["text"] = agent.pos
         portrayal["text_color"] = "black"
 
     if (isinstance(agent, Traffic_Light)):
-        portrayal["Color"] = "red" if not agent.state else "green"
+        portrayal["Shape"] = "./Revision3/Mesa/img/rojo.png" if not agent.state else "./Revision3/Mesa/img/verde.png"
         portrayal["Layer"] = 0
+        portrayal["w"] = 1
+        portrayal["h"] = 1
+        
 
 
     if (isinstance(agent, Obstacle)):
@@ -35,24 +37,22 @@ def agent_portrayal(agent):
 
 
     if (isinstance(agent, Car)):
-        portrayal["Color"] = "#0000FF"
+        portrayal["Shape"] = "./Revision3/Mesa/img/cuchao.png"
         portrayal["Layer"] = 1
-        portrayal["Shape"] = "circle"
-        portrayal["r"] = 1
-        portrayal["text"] = agent.unique_id
-        portrayal["text_color"] = "black"
 
+        portrayal["text"] = agent.unique_id
+        
     return portrayal
 
 width = 0
 height = 0
 
-with open('2022_base.txt') as baseFile:
+with open('./Revision3/Mesa/Docs/2022_base.txt') as baseFile:
     lines = baseFile.readlines()
     width = len(lines[0])-1
     height = len(lines)
 
-model_params = {"N":2, "lightSpan": 10}
+model_params = {"N":20, "lightSpan": 10}
 
 grid = CanvasGrid(agent_portrayal, width, height, 900, 900)
 
