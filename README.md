@@ -34,7 +34,7 @@
 
 ### Actividad Integradora
 
-`<a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/tree/main/ActividadIntegradora">`  Actividad Integradora `</a>`
+- <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/tree/main/ActividadIntegradora"> Actividad Integradora </a>
 
 ### Problematica
 
