@@ -1,0 +1,45 @@
+newmtl blinn4SG
+illum 4
+Kd 0.86 0.86 0.86
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+bump metal bamp.png -bm 0.179856
+Ni 1.00
+Ks 0.22 0.22 0.22
+newmtl blinn5SG
+illum 4
+Kd 0.07 0.07 0.07
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+bump metal bamp.png -bm 0.05
+Ni 1.00
+Ks 0.21 0.21 0.21
+newmtl blinn7SG
+illum 4
+Kd 0.11 0.11 0.11
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+bump metal bamp.png -bm 0.755396
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl blinn9SG
+illum 4
+Kd 1.00 0.89 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 0.00
+newmtl blinn10SG
+illum 4
+Kd 0.00 1.00 0.00
+Ka 0.00 1.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.00 1.00 0.00
+newmtl lightFog1SG
+illum 4
+Kd 1.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 0.00 0.00
