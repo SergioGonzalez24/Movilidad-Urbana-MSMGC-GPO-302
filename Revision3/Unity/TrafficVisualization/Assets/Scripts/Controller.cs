@@ -1,3 +1,8 @@
+// TC2008B. Sistemas Multiagentes y Gráficas Computacionales
+// C# client to interact with Python. Based on the code provided by Sergio Ruiz.
+// Octavio Navarro. October 2021
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,7 +28,6 @@ public class RunHandler
 
 public class Controller : MonoBehaviour
 {
-    //string serverUrl = "http://localhost:8585";
     string serverUrl = "localhost:8000";
     string getCarsEndpoint = "/getCars";
     string sendConfigEndpoint = "/init";
@@ -87,11 +91,8 @@ public class Controller : MonoBehaviour
                 {
                     Vector3 interpolated = Vector3.Lerp(oldPositions[s], newPositions[s], dt);
                     cars[s].transform.localPosition = interpolated;
-
                     Vector3 dir = oldPositions[s] - newPositions[s];
                     cars[s].transform.rotation = Quaternion.LookRotation(-dir);
-
-
                 }
                 // Move time from the last frame
                 timer += Time.deltaTime;
