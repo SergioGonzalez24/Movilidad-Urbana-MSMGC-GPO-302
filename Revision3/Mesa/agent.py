@@ -20,7 +20,7 @@ class Car(Agent):
         self.tmpDir = ""
         # Attribute used to avoid cycles by keeping a log of the car's
         # positions and its decisions
-        self.takenRoute = [[],[]]
+        self.takenRoute = [[], []]
         self.numOfCars = self.model.num_agents
 
     def step(self):
