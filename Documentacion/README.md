@@ -11,5 +11,4 @@
   - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Revision%202.pdf"> Revision 2 </a>
   - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Revision%203.pdf"> Revision 3 </a>
   
-  #### - Actividad Integradora
-  - <a href=""> Actividad Integradora </a>
+
