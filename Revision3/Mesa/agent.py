@@ -1,5 +1,6 @@
 from mesa import Agent
 from random import randint
+import random
 
 # Agent that represents the Cars going around the city
 class Car(Agent):
@@ -72,6 +73,11 @@ class Car(Agent):
                 if posStepsCont[currPos][0].direction == "Omni":
                     futurePos = possibleSteps[motion[self.tmpDir]]
                      
+                     # Avoids collision
+                    if Car in getConTypeOfCell(futurePos):
+                        print("--------------------Car", self.unique_id, "is avoiding collision-----------------------")
+                        self.colision = True
+                        self.model.grid.move_agent(self, self.avoidCollision(possibleSteps, getConTypeOfCell, self.tmpDir))
                                
                     # If the car is moving horizontally then it moves to the possible next coordinates given that axis and direction
                     if self.tmpDir == "Left" or self.tmpDir == "Right":
@@ -107,8 +113,37 @@ class Car(Agent):
                 else:
                     self.isStop = True
                     
-       
-                    
+    def avoidCollision(self, possibleSteps, getConTypeOfCell, axis):
+        """
+        Method used to avoid collision between cars in the same intersection avoiding the program to crash
+        ● Parameters: 
+            self: Reference to class' instance
+            possibleSteps: List of possible steps the car can take
+            getConTypeOfCell: Function that returns the type of the content of a cell
+        ● Return: 
+            cell: Cell where the car will move to avoid collision
+        
+        """
+        # Cell where the car will move to avoid collision
+        # carToAvoid = [i for i in possibleSteps if Car in getConTypeOfCell(i)][0]
+        # cell = [i for i in possibleSteps if i != carToAvoid][0]
+        # return cell
+        
+        carToAvoid = [i for i in possibleSteps if Car in getConTypeOfCell(i)][0]
+        try:
+            if axis == "Left" or axis == "Right":
+                cell = [i for i in possibleSteps if i != carToAvoid and i[1] == self.pos[1]][0]
+                return cell
+            elif axis == "Up" or axis == "Down":
+                cell = [i for i in possibleSteps if i != carToAvoid and i[0] == self.pos[0]][0]
+                return cell
+            else:
+                cell = [i for i in possibleSteps if i != carToAvoid][0]
+                return cell
+        except:
+            # move anywhere else if it can't move to the side of the car
+            
+                     
     def getMotion(self, posSteps):
         """
         Method used to determine the index of the neighborhood list depending on the direction
