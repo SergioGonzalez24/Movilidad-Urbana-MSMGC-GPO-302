@@ -443,7 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficEP: /getSemaforos
-  semPrefab: {fileID: 3491114721772648783, guid: 1d01d379791e7fe408e41075717256d8, type: 3}
+  semPrefab: {fileID: 977751172053098658, guid: 994ec0f8eba89684d8fda12de75b1b7a, type: 3}
+  semaforo: {fileID: 977751172053098658, guid: 994ec0f8eba89684d8fda12de75b1b7a, type: 3}
   carPrefab: {fileID: 2004139360312368022, guid: 2839345c6c8d13e4b9c30aa912f2ce9e, type: 3}
   carsNumber: 20
   lightSpan: 10

@@ -24,6 +24,30 @@ public class RunHandler
 {
     public string message;
 }
+[Serializable]
+public class TLightData
+{
+    public string id;
+    public float x, y, z;
+    public bool state;
+
+    public TLightData(string id, float x, float y, float z, bool state)
+    {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.state = state;
+    }
+}
+
+[Serializable]
+public class TLightsData
+{
+    public List<TLightData> positions;
+
+    public TLightsData() => this.positions = new List<TLightData>();
+}
 
 
 public class Controller : MonoBehaviour
@@ -32,14 +56,20 @@ public class Controller : MonoBehaviour
     string getCarsEndpoint = "/getCars";
     string sendConfigEndpoint = "/init";
     string updateEndpoint = "/update";
+    string getSemaforoEndpoint = "/getSemaforos";
+    bool tlightStarted = false;
+    TLightsData tlightsData;
     [SerializeField] string trafficEP;
     [SerializeField] GameObject semPrefab;
+     Dictionary<string, GameObject> lights;
     Semaforos semaforos;
     GameObject[] semaforoList;
+    public GameObject semaforo;
     CarData carsData;
     List<GameObject> cars;
     List<Vector3> oldPositions;
     List<Vector3> newPositions;
+    
     // Pause the simulation while we get the update from the server
     bool hold = false;
     int currStep = 1, currLight = 0;
@@ -54,7 +84,6 @@ public class Controller : MonoBehaviour
         carsData = new CarData();
         oldPositions = new List<Vector3>();
         newPositions = new List<Vector3>();
-
         cars = new List<GameObject>();
         semaforoList = new GameObject[24];
         for (int i = 0; i < 24; i++)
@@ -121,6 +150,7 @@ public class Controller : MonoBehaviour
             Debug.Log("Configuration upload complete!");
             Debug.Log("Getting Agents positions");
             StartCoroutine(GetCarsData());
+            StartCoroutine(GetLightsData());
         }
     }
 
@@ -143,6 +173,7 @@ public class Controller : MonoBehaviour
             else if (currLight == lightSpan - 1)
             {
                 UpdateTrafficLights();
+                StartCoroutine(GetLightsData());
             }
             currLight++;
         }
@@ -177,7 +208,36 @@ public class Controller : MonoBehaviour
             hold = false;
         }
     }
+    IEnumerator GetLightsData(){
+            UnityWebRequest www = UnityWebRequest.Get(serverUrl + getSemaforoEndpoint);
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+                Debug.Log(www.error);
+            else{
+                tlightsData = JsonUtility.FromJson<TLightsData>(www.downloadHandler.text);
 
+                foreach(TLightData light in tlightsData.positions)
+                {
+                    // Instanciar semaforos
+                    if (!tlightStarted)
+                    {
+                        Vector3 lightPosition = new Vector3(light.x, light.y, light.z);
+                        lights[light.id] = Instantiate(semaforo, lightPosition, Quaternion.identity);
+                        lights[light.id].name = light.id;
+                    }
+                    // Si el semaforo ya existe, modificar su estado
+                    else
+                    {
+                        if(light.state){
+                            lights[light.id].GetComponent<Light>().color = Color.green;
+                        } else {
+                            lights[light.id].GetComponent<Light>().color = Color.red;
+                        }
+                    }
+                }
+                if (!tlightStarted) tlightStarted = true;
+            }
+        }
     /*void updateTrafficLights() {
     	foreach(GameObject trafficLight in CityMaker.Instance.trafficLights) {
     		if(trafficLight.transform.GetChild(2).gameObject.activeInHierarchy && currLight == lightSpan-1) {
