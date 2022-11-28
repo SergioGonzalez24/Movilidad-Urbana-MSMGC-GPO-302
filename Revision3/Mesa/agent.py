@@ -142,7 +142,8 @@ class Car(Agent):
                 return cell
         except:
             # move anywhere else if it can't move to the side of the car
-            
+            cell = [i for i in possibleSteps if i != carToAvoid][0]
+            return cell
                      
     def getMotion(self, posSteps):
         """
