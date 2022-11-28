@@ -2,195 +2,176 @@
 // C# client to interact with Python. Based on the code provided by Sergio Ruiz.
 // Octavio Navarro. October 2021
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[Serializable]
-public class AgentData
+public class Agents
 {
-    public string id;
-    public float x, y, z;
-
-    public AgentData(string id, float x, float y, float z)
-    {
-        this.id = id;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+    public List<Vector3> positions;
+    public List<int> objType;
 }
 
-[Serializable]
-
-public class AgentsData
+public class Semaforos
 {
-    public List<AgentData> positions;
-
-    public AgentsData() => this.positions = new List<AgentData>();
+    public List<Vector3> positions;
+    public List<bool> states;
 }
 
+public class RunHandler
+{
+    public string message;
+}
 public class AgentController : MonoBehaviour
 {
-    // private string url = "https://agents.us-south.cf.appdomain.cloud/";
-    string serverUrl = "http://localhost:8585";
-    string getAgentsEndpoint = "/getAgents";
-    string getObstaclesEndpoint = "/getObstacles";
-    string sendConfigEndpoint = "/init";
-    string updateEndpoint = "/update";
-    AgentsData agentsData, obstacleData;
-    Dictionary<string, GameObject> agents;
-    Dictionary<string, Vector3> prevPositions, currPositions;
+    [SerializeField] string url;
+    [SerializeField] string configEP;
+    [SerializeField] string updateEP;
+    [SerializeField] string carEP;
+    [SerializeField] string trafficEP;
+    [SerializeField] int numAgents;
+    [SerializeField] GameObject carPrefab;
+    [SerializeField] GameObject semPrefab;
+    [SerializeField] float updateDelay;
+    Agents agents;
+    Semaforos semaforos;
+    GameObject[] cars;
+    GameObject[] semaforoList;
 
-    bool updated = false, started = false;
-
-    public GameObject agentPrefab, obstaclePrefab, floor;
-    public int NAgents, width, height;
-    public float timeToUpdate = 5.0f;
-    private float timer, dt;
-
+    public float updateTime = 0;
+    bool isFinished = false;
+    int finishCounter = 30;
+    List<Vector3> oldPositions;
+    List<Vector3> newPositions;
+    public float dt;
+    bool hold = false;
+    // Start is called before the first frame update
     void Start()
     {
-        agentsData = new AgentsData();
-        obstacleData = new AgentsData();
-
-        prevPositions = new Dictionary<string, Vector3>();
-        currPositions = new Dictionary<string, Vector3>();
-
-        agents = new Dictionary<string, GameObject>();
-
-        floor.transform.localScale = new Vector3((float)width/10, 1, (float)height/10);
-        floor.transform.localPosition = new Vector3((float)width/2-0.5f, 0, (float)height/2-0.5f);
-        
-        timer = timeToUpdate;
-
+        oldPositions = new List<Vector3>();
+        newPositions = new List<Vector3>();
+        cars = new GameObject[numAgents];
+        semaforoList = new GameObject[24];
+        for (int i = 0; i < numAgents; i++){
+            cars[i] = Instantiate(carPrefab, Vector3.zero, Quaternion.identity);
+        }
+        for (int i = 0; i < 24; i++){
+            semaforoList[i] = Instantiate(semPrefab, Vector3.zero, Quaternion.identity);
+        }
         StartCoroutine(SendConfiguration());
     }
 
-    private void Update() 
-    {
-        if(timer < 0)
-        {
-            timer = timeToUpdate;
-            updated = false;
-            StartCoroutine(UpdateSimulation());
-        }
-
-        if (updated)
-        {
-            timer -= Time.deltaTime;
-            dt = 1.0f - (timer / timeToUpdate);
-
-            foreach(var agent in currPositions)
-            {
-                Vector3 currentPosition = agent.Value;
-                Vector3 previousPosition = prevPositions[agent.Key];
-
-                Vector3 interpolated = Vector3.Lerp(previousPosition, currentPosition, dt);
-                Vector3 direction = currentPosition - interpolated;
-
-                agents[agent.Key].transform.localPosition = interpolated;
-                if(direction != Vector3.zero) agents[agent.Key].transform.rotation = Quaternion.LookRotation(direction);
+    // Update is called once per frame
+    void Update()
+    {   
+        float t = updateTime/updateDelay;
+        dt = t * t * (3f - 2f*t);
+            if(!isFinished || finishCounter > 0){
+                if(updateTime > updateDelay){
+                    hold = true;
+                    StartCoroutine(UpdatePositions());
+                    updateTime = 0;
+                }
+                updateTime += Time.deltaTime;
             }
-
-            // float t = (timer / timeToUpdate);
-            // dt = t * t * ( 3f - 2f*t);
-        }
-    }
- 
-    IEnumerator UpdateSimulation()
-    {
-        UnityWebRequest www = UnityWebRequest.Get(serverUrl + updateEndpoint);
-        yield return www.SendWebRequest();
- 
-        if (www.result != UnityWebRequest.Result.Success)
-            Debug.Log(www.error);
-        else 
+            if (!hold)
         {
-            StartCoroutine(GetAgentsData());
+            
+            for (int s = 0; s < cars.Length; s++)
+            {
+                Vector3 interpolated = Vector3.Lerp(oldPositions[s], newPositions[s], dt);
+                cars[s].transform.localPosition = interpolated;
+                
+                Vector3 dir = oldPositions[s] - newPositions[s];
+                cars[s].transform.rotation = Quaternion.LookRotation(dir);
+                
+            }
+            if(isFinished){finishCounter -= 1;}
+            
+    }
+    
+    }
+
+
+    IEnumerator UpdatePositions()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url + updateEP);
+        yield return www.SendWebRequest();
+
+        if(www.result == UnityWebRequest.Result.Success){
+            //Debug.Log(www.downloadHandler.text);
+            RunHandler handler = JsonUtility.FromJson<RunHandler>(www.downloadHandler.text);
+            if(handler.message == "Finished"){
+                isFinished = true;
+            }
+            StartCoroutine(UpdateCarPositions());
+            StartCoroutine(UpdateTrafficLights());
+        } else {
+            Debug.Log(www.error);
+        }
+
+    }
+    IEnumerator UpdateCarPositions()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url + carEP);
+        yield return www.SendWebRequest();
+
+        if(www.result == UnityWebRequest.Result.Success){
+            //Debug.Log(www.downloadHandler.text);
+            agents = JsonUtility.FromJson<Agents>(www.downloadHandler.text);
+
+            // Store the old positions for each agent
+            oldPositions = new List<Vector3>(newPositions);
+
+            newPositions.Clear();
+
+            foreach(Vector3 v in agents.positions)
+                newPositions.Add(v);
+
+            hold = false;
+        } else {
+            Debug.Log(www.error);
         }
     }
 
+    IEnumerator UpdateTrafficLights()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url + trafficEP);
+        yield return www.SendWebRequest();
+
+        if(www.result == UnityWebRequest.Result.Success){
+            //Debug.Log(www.downloadHandler.text);
+            semaforos = JsonUtility.FromJson<Semaforos>(www.downloadHandler.text);
+            MoveSem();
+            
+        } else {
+            Debug.Log(www.error);
+        }
+    }
+
+    
     IEnumerator SendConfiguration()
     {
         WWWForm form = new WWWForm();
-
-        form.AddField("NAgents", NAgents.ToString());
-        form.AddField("width", width.ToString());
-        form.AddField("height", height.ToString());
-
-        UnityWebRequest www = UnityWebRequest.Post(serverUrl + sendConfigEndpoint, form);
-        www.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+        form.AddField("numAgents", numAgents.ToString());
+        UnityWebRequest www = UnityWebRequest.Post(url + configEP, form);
         yield return www.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success)
-        {
+        if(www.result == UnityWebRequest.Result.Success){
+            Debug.Log(www.downloadHandler.text);
+        } else {
             Debug.Log(www.error);
-        }
-        else
-        {
-            Debug.Log("Configuration upload complete!");
-            Debug.Log("Getting Agents positions");
-            StartCoroutine(GetAgentsData());
-            StartCoroutine(GetObstacleData());
         }
     }
 
-    IEnumerator GetAgentsData() 
+    void MoveSem()
     {
-        UnityWebRequest www = UnityWebRequest.Get(serverUrl + getAgentsEndpoint);
-        yield return www.SendWebRequest();
- 
-        if (www.result != UnityWebRequest.Result.Success)
-            Debug.Log(www.error);
-        else 
-        {
-            agentsData = JsonUtility.FromJson<AgentsData>(www.downloadHandler.text);
-
-            foreach(AgentData agent in agentsData.positions)
-            {
-                Vector3 newAgentPosition = new Vector3(agent.x, agent.y, agent.z);
-
-                    if(!started)
-                    {
-                        prevPositions[agent.id] = newAgentPosition;
-                        agents[agent.id] = Instantiate(agentPrefab, newAgentPosition, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Vector3 currentPosition = new Vector3();
-                        if(currPositions.TryGetValue(agent.id, out currentPosition))
-                            prevPositions[agent.id] = currentPosition;
-                        currPositions[agent.id] = newAgentPosition;
-                    }
-            }
-
-            updated = true;
-            if(!started) started = true;
+        for (int i=0; i<24; i++) {
+            semaforoList[i].transform.position = semaforos.positions[i];
+            semaforoList[i].GetComponent<SemaforoLuz>().toggleLight(semaforos.states[i]);
+            Debug.Log(semaforos.states[i]);
         }
-    }
-
-    IEnumerator GetObstacleData() 
-    {
-        UnityWebRequest www = UnityWebRequest.Get(serverUrl + getObstaclesEndpoint);
-        yield return www.SendWebRequest();
- 
-        if (www.result != UnityWebRequest.Result.Success)
-            Debug.Log(www.error);
-        else 
-        {
-            obstacleData = JsonUtility.FromJson<AgentsData>(www.downloadHandler.text);
-
-            Debug.Log(obstacleData.positions);
-
-            foreach(AgentData obstacle in obstacleData.positions)
-            {
-                Instantiate(obstaclePrefab, new Vector3(obstacle.x, obstacle.y, obstacle.z), Quaternion.identity);
-            }
-        }
+        
     }
 }
