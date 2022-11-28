@@ -1,9 +1,19 @@
 # Importing the necessary libraries.
-from model import TrafficModel
+from model import MapaModel
 from agent import *
 from flask import Flask, request, jsonify
 import os
 
+# ----------------------------------------------------------
+# Revisión 3 - 60% -- server_flask.py
+#
+# Date: 28-Nov-2022
+# Authors:
+#           Sergio Manuel Gonzalez Vargas - A01745446
+#           Gilberto André García Gaytán - A01753176
+#           Fernando Ortiz Saldaña - A01376737
+#           Ricardo Ramírez Condado - A01379299
+# ----------------------------------------------------------
 
 # Defining the variables that will be used in the code.
 carsNumber = 20
@@ -41,7 +51,7 @@ def initModel():
         lightSpan = int(request.form.get("lightSpan"))
 
         print(request.form)
-        trafficModel = TrafficModel(carsNumber, lightSpan)
+        trafficModel = MapaModel(carsNumber, lightSpan)
 
         return jsonify({"message": "Parameters received, model initiated."})
 
@@ -57,7 +67,7 @@ def getCars():
     global trafficModel
 
     if request.method == "GET":
-        carPositions = [{"x":x,"y":0,"z":z,"w":e.isStop,"id":e.unique_id} for (a,x,z) in trafficModel.grid.coord_iter() for e in a if isinstance(e, Car)]
+        carPositions = [{"x":x,"y":0,"z":z,"w":e.detenido,"id":e.unique_id} for (a,x,z) in trafficModel.grid.coord_iter() for e in a if isinstance(e, Mcqueen)]
 
         carPositions.sort(key=lambda x: x["id"])
         return jsonify({"positions": carPositions})
@@ -90,7 +100,7 @@ def update_traffic_light():
     object containing the positions and states of the traffic lights
     :return: A JSON object with two keys: positions and states.
     """
-    states = [{"x":x, "y":1, "z":z,"state":b.state, "id":b.unique_id} for (a, x, z) in trafficModel.grid.coord_iter() for b in a if isinstance(b, Traffic_Light)]
+    states = [{"x":x, "y":1, "z":z,"state":b.state, "id":b.unique_id} for (a, x, z) in trafficModel.grid.coord_iter() for b in a if isinstance(b, Semaforo)]
     states.sort(key=sortByID)
     sorted_points = [{"x": i["x"], "y":1, "z":i["z"]} for i in states]
     sorted_states = [i["state"] for i in states]
