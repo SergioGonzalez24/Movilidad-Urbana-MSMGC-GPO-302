@@ -36,6 +36,9 @@ class Mcqueen(Agent):
         self.numOfCars = self.model.num_agents
         # A variable that is used to check if the car is avoiding a collision.
         self.colision = False
+        # self.nextCord = []
+        self.recorrido = [] # A list that stores the coordinates of the cells that the car has visited.
+        self.isStuck = False # A variable that is used to check if the car is avoiding a collision.
 
     def step(self):
         """
@@ -69,6 +72,11 @@ class Mcqueen(Agent):
         movimiento = self.obtenMovimiento(checa_entorno)
         # Checking if the car is in its destination, if it is, it removes the car from the grid and
         # the schedule.
+        
+        
+        self.recorrido.append(self.pos)
+       
+        
         if self.pos == self.destino:
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)
@@ -88,11 +96,70 @@ class Mcqueen(Agent):
                 # next cell in the direction of the car.
                 if mover_celda[posicion_actual][0].direction == "Omni":
                     f_paso = checa_entorno[movimiento[self.Direccion]]
-                    # Checking if the next cell is a car, if it is, it avoids the collision.
-                    if Mcqueen in obtener_celda(f_paso):
-                        print("--------------------Mcqueen", self.unique_id, "evadió colisión-----------------------")
-                        self.colision = True
-                        self.model.grid.move_agent(self, self.Esquivar(checa_entorno, obtener_celda, self.Direccion))
+                
+                #If the has the same position in consecutive steps, it is stuck
+                
+                    try:
+                        if self.pos == self.recorrido[-2]:
+                            print(f"McQeen {self.unique_id} is stuck at {self.pos}")
+                            self.isStuck = True
+                            while self.isStuck:
+                                print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
+                                for i in checa_entorno:
+                                    if i == self.pos:
+                                        continue
+                                    else:
+                                        self.model.grid.move_agent(self, i)
+                                        self.isStuck = False
+                                        break
+                                break
+                    except:
+                        print("Not stuck")
+                        self.detenido = False
+                        
+                    # try:
+                    #     if self.pos == self.recorrido[-2]:
+                    #         print(f"McQeen {self.unique_id} is stuck at {self.pos}")
+                    #         self.isStuck = True
+                    #         print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
+                                               
+                                                
+                            
+                    # # except:
+                    # #     print("Not stuck")
+                        
+                        
+                    # try:
+                    #             if self.pos == self.recorrido[-2]:
+                    #                 print(f"McQeen {self.unique_id} is stuck at {self.pos}")
+                    #                 self.isStuck = True
+                    #                 while self.isStuck:
+                    #                     print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
+                    #                     for i in checa_entorno:
+                    #                         if i == self.pos:
+                    #                             continue
+                    #                         else:
+                    #                             self.model.grid.move_agent(self, i)
+                    #                             if self.pos == self.recorrido[-2]:
+                    #                                 continue
+                    #                             else:
+                    #                                 self.isStuck
+                    #         except:
+                    #             print("Not stuck")
+                    #             self.detenido = False
+                        
+                    
+        
+             
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     # Checking if the direction of the car is left or right, if it is, it is checking
                     # if the next cell is a car, if it is, it avoids the collision, if not, it checks
                     if self.Direccion == "Left" or self.Direccion == "Right":
@@ -101,6 +168,8 @@ class Mcqueen(Agent):
                                          (self.pos[0], self.pos[1]+1),
                                          (self.pos[0], self.pos[1]-1)],
                                         obtener_celda, 1)
+                      
+                      
                     # Checking if the direction of the car is up or down, if it is, it is checking if the next cell is a
                     # car, if it is, it avoids the collision, if not, it checks if the next cell is a car, if it is, it
                     # avoids the collision, if not, it checks if the next cell is a car, if it is, it avoids the
@@ -120,13 +189,14 @@ class Mcqueen(Agent):
                 # so, it moves the agent to the next cell.
                 else:
                     f_paso = movimiento[mover_celda[posicion_actual][0].direction]
+                                            
                     if Semaforo == pasos[f_paso][0]:
                         if mover_celda[f_paso][0].state and Mcqueen not in pasos[f_paso]:
                             self.model.grid.move_agent(self,
                                                        checa_entorno[f_paso])
                             self.Direccion = mover_celda[posicion_actual][0].direction
-                            self.detenido = False
-                        # Checking if the program is running on Windows or Linux.
+                             
+                
                         else:
                             self.detenido = True
                     # The above code is checking if the agent is in the same cell as the agent that is
@@ -136,7 +206,7 @@ class Mcqueen(Agent):
                         self.model.grid.move_agent(self, checa_entorno[f_paso])
                         self.Direccion = mover_celda[posicion_actual][0].direction
                         self.detenido = False
-                    # Checking if the program is running on Windows or Linux.
+                  
                     else:
                         self.detenido = True
             # The above code is checking if the agent is in the same cell as the McQueen agent. If it
@@ -148,30 +218,6 @@ class Mcqueen(Agent):
                 # A class that is used to create a thread.
                 else:
                     self.detenido = True
-
-    def Esquivar(self, pasos, obten_celda, ejes):
-        """
-        If the car is in the way, move to the side of the car
-        :param pasos: list of possible moves
-        :param obten_celda: This is a function that returns the contents of a cell
-        :param ejes: The direction of the car
-        :return: the next position of the car.
-        """
-        esquiva = [i for i in pasos if Mcqueen in obten_celda(i)][0]
-        try:
-            if ejes == "Left" or ejes == "Right":
-                celda = [i for i in pasos if i != esquiva and i[1] == self.pos[1]][0]
-                return celda
-            elif ejes == "Up" or ejes == "Down":
-                celda = [i for i in pasos if i != esquiva and i[0] == self.pos[0]][0]
-                return celda
-            else:
-                celda = [i for i in pasos if i != esquiva][0]
-                return celda
-        except:
-            # move anywhere else if it can't move to the side of the car
-            celda = [i for i in pasos if i != esquiva][0]
-            return celda
 
     def obtenMovimiento(self, siguiente_paso):
         """
