@@ -36,6 +36,7 @@ class Mcqueen(Agent):
         self.numOfCars = self.model.num_agents
         # A variable that is used to check if the car is avoiding a collision.
         self.colision = False
+        # self.nextCord = []
 
     def step(self):
         """
@@ -69,6 +70,8 @@ class Mcqueen(Agent):
         movimiento = self.obtenMovimiento(checa_entorno)
         # Checking if the car is in its destination, if it is, it removes the car from the grid and
         # the schedule.
+        
+          
         if self.pos == self.destino:
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)
@@ -86,13 +89,30 @@ class Mcqueen(Agent):
             if Ruta66 == pasos[posicion_actual][0]:  # Cuchao
                 # Checking if the direction of the road is omni-directional, if it is, it gets the
                 # next cell in the direction of the car.
+                
                 if mover_celda[posicion_actual][0].direction == "Omni":
                     f_paso = checa_entorno[movimiento[self.Direccion]]
-                    # Checking if the next cell is a car, if it is, it avoids the collision.
+                    
+                    
+                    
+                    # # Checking if the next cell is a car, if it is, it avoids the collision.
                     if Mcqueen in obtener_celda(f_paso):
-                        print("--------------------Mcqueen", self.unique_id, "evadió colisión-----------------------")
+                        print("--------------------Mcqueen", self.unique_id, "evadió colisión in OMNI-----------------------")
+                        
                         self.colision = True
-                        self.model.grid.move_agent(self, self.Esquivar(checa_entorno, obtener_celda, self.Direccion))
+                        self.detenido = True
+                    elif Mcqueen not in obtener_celda(f_paso):
+                        self.detenido = False
+                        self.colision = False
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     # Checking if the direction of the car is left or right, if it is, it is checking
                     # if the next cell is a car, if it is, it avoids the collision, if not, it checks
                     if self.Direccion == "Left" or self.Direccion == "Right":
@@ -101,6 +121,8 @@ class Mcqueen(Agent):
                                          (self.pos[0], self.pos[1]+1),
                                          (self.pos[0], self.pos[1]-1)],
                                         obtener_celda, 1)
+                      
+                      
                     # Checking if the direction of the car is up or down, if it is, it is checking if the next cell is a
                     # car, if it is, it avoids the collision, if not, it checks if the next cell is a car, if it is, it
                     # avoids the collision, if not, it checks if the next cell is a car, if it is, it avoids the
@@ -120,13 +142,21 @@ class Mcqueen(Agent):
                 # so, it moves the agent to the next cell.
                 else:
                     f_paso = movimiento[mover_celda[posicion_actual][0].direction]
+                    print("Cuchao in ", self.pos, " to ", f_paso)
+                    
+                    # Check if the next cell is a car, if it is, it avoids the collision.
+                    if Mcqueen == pasos[f_paso][0]:
+                        print("--------------------Mcqueen", self.unique_id, "evadió colisión NOT OMNI-----------------------")
+                        self.colision = True
+                        self.model.grid.move_agent(self, self.Esquivar(checa_entorno, obtener_celda, self.Direccion))
+                        
                     if Semaforo == pasos[f_paso][0]:
                         if mover_celda[f_paso][0].state and Mcqueen not in pasos[f_paso]:
                             self.model.grid.move_agent(self,
                                                        checa_entorno[f_paso])
                             self.Direccion = mover_celda[posicion_actual][0].direction
                             self.detenido = False
-                        # Checking if the program is running on Windows or Linux.
+                        
                         else:
                             self.detenido = True
                     # The above code is checking if the agent is in the same cell as the agent that is
@@ -136,7 +166,7 @@ class Mcqueen(Agent):
                         self.model.grid.move_agent(self, checa_entorno[f_paso])
                         self.Direccion = mover_celda[posicion_actual][0].direction
                         self.detenido = False
-                    # Checking if the program is running on Windows or Linux.
+                  
                     else:
                         self.detenido = True
             # The above code is checking if the agent is in the same cell as the McQueen agent. If it
@@ -161,16 +191,20 @@ class Mcqueen(Agent):
         try:
             if ejes == "Left" or ejes == "Right":
                 celda = [i for i in pasos if i != esquiva and i[1] == self.pos[1]][0]
+                self.colision = False
                 return celda
             elif ejes == "Up" or ejes == "Down":
                 celda = [i for i in pasos if i != esquiva and i[0] == self.pos[0]][0]
+                self.colision = False
                 return celda
             else:
                 celda = [i for i in pasos if i != esquiva][0]
+                self.colision = False
                 return celda
         except:
             # move anywhere else if it can't move to the side of the car
             celda = [i for i in pasos if i != esquiva][0]
+            self.colision = False
             return celda
 
     def obtenMovimiento(self, siguiente_paso):
