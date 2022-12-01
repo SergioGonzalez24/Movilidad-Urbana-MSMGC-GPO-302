@@ -8,7 +8,6 @@ from random import *
 # Authors:
 #           Sergio Manuel Gonzalez Vargas - A01745446
 #           Gilberto André García Gaytán - A01753176
-#           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
 # -----------------------------------------------------------
 
@@ -36,9 +35,10 @@ class Mcqueen(Agent):
         self.numOfCars = self.model.num_agents
         # A variable that is used to check if the car is avoiding a collision.
         self.colision = False
-        # self.nextCord = []
-        self.recorrido = [] # A list that stores the coordinates of the cells that the car has visited.
-        self.isStuck = False # A variable that is used to check if the car is avoiding a collision.
+        # A list that stores the coordinates of the cells that the car has visited.
+        self.recorrido = [] 
+        # A variable that is used to check if the car is avoiding a collision.
+        self.isStuck = False 
 
     def step(self):
         """
@@ -73,15 +73,14 @@ class Mcqueen(Agent):
         # Checking if the car is in its destination, if it is, it removes the car from the grid and
         # the schedule.
         
-        
         self.recorrido.append(self.pos)
        
-        
         if self.pos == self.destino:
             self.model.grid.remove_agent(self)
             self.model.schedule.remove(self)
             self.numOfCars -= 1
             return
+        
         # Checking if the car is in its destination, if it is, it removes the car from the grid and
         # the schedule.
         if self.pos != self.destino:
@@ -90,6 +89,7 @@ class Mcqueen(Agent):
                     self.model.grid.move_agent(self, vecino_carro)
                     self.detenido = False
                     return
+                
             # Checking if the cell that the agent is in is a road.
             if Ruta66 == pasos[posicion_actual][0]:  # Cuchao
                 # Checking if the direction of the road is omni-directional, if it is, it gets the
@@ -98,13 +98,10 @@ class Mcqueen(Agent):
                     f_paso = checa_entorno[movimiento[self.Direccion]]
                 
                 #If the has the same position in consecutive steps, it is stuck
-                
                     try:
                         if self.pos == self.recorrido[-2]:
-                            print(f"McQeen {self.unique_id} is stuck at {self.pos}")
                             self.isStuck = True
                             while self.isStuck:
-                                print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
                                 for i in checa_entorno:
                                     if i == self.pos:
                                         continue
@@ -114,52 +111,9 @@ class Mcqueen(Agent):
                                         break
                                 break
                     except:
-                        print("Not stuck")
                         self.detenido = False
-                        
-                    # try:
-                    #     if self.pos == self.recorrido[-2]:
-                    #         print(f"McQeen {self.unique_id} is stuck at {self.pos}")
-                    #         self.isStuck = True
-                    #         print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
-                                               
-                                                
-                            
-                    # # except:
-                    # #     print("Not stuck")
-                        
-                        
-                    # try:
-                    #             if self.pos == self.recorrido[-2]:
-                    #                 print(f"McQeen {self.unique_id} is stuck at {self.pos}")
-                    #                 self.isStuck = True
-                    #                 while self.isStuck:
-                    #                     print(f"McQeen {self.unique_id} possible moves: {checa_entorno}")
-                    #                     for i in checa_entorno:
-                    #                         if i == self.pos:
-                    #                             continue
-                    #                         else:
-                    #                             self.model.grid.move_agent(self, i)
-                    #                             if self.pos == self.recorrido[-2]:
-                    #                                 continue
-                    #                             else:
-                    #                                 self.isStuck
-                    #         except:
-                    #             print("Not stuck")
-                    #             self.detenido = False
-                        
-                    
-        
-             
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                  
+                           
                     # Checking if the direction of the car is left or right, if it is, it is checking
                     # if the next cell is a car, if it is, it avoids the collision, if not, it checks
                     if self.Direccion == "Left" or self.Direccion == "Right":

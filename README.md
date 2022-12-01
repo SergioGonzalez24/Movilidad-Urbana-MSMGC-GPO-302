@@ -1,7 +1,4 @@
-| col1 | col2 | col3 |
-| ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
+
 
 # Movilidad-Urbana-MSMGC-GPO-302
 

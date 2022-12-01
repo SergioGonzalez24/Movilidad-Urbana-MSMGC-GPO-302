@@ -4,9 +4,7 @@ from model import MapaModel
 from model import tiempo, compute_agent_moves
 from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.ModularVisualization import ModularServer
-# mesa.visualization.ModularVisualization module.
 from mesa.visualization.ModularVisualization import ModularServer
-# Importing the ChartModule class from the mesa.visualization.modules module.
 from mesa.visualization.modules import ChartModule
 
 # -----------------------------------------------------------
@@ -16,7 +14,6 @@ from mesa.visualization.modules import ChartModule
 # Authors:
 #           Sergio Manuel Gonzalez Vargas - A01745446
 #           Gilberto André García Gaytán - A01753176
-#           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
 # -----------------------------------------------------------
 
@@ -42,7 +39,6 @@ def agent_portrayal(agent):
         portrayal["Color"] = "grey"
         portrayal["Layer"] = 0
         portrayal["text"] = agent.pos
-        # portrayal["text"] = agent.direction
         portrayal["text_color"] = "black"
 
 
@@ -82,7 +78,7 @@ with open('./Revision3/Mesa/Docs/2022_base.txt') as baseFile:
     height = len(lines)
 
 # Setting the number of agents and the time of the simulation.
-model_params = {"N": 20, "tiempo": 10}
+model_params = {"N": 100, "tiempo": 10}
 
 # Creating a grid with the width and height of the grid, and the width and height of the grid.
 grid = CanvasGrid(agent_portrayal, width, height, 700, 700)

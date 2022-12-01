@@ -1,4 +1,4 @@
-# Actividad integradora 
+# Actividad integradora
 
 ### Integrantes
 
@@ -6,12 +6,11 @@
 - Gilberto André García Gaytán - A01753176
 - Fernando Ortiz Saldaña - A01376737
 - Ricardo Ramírez Condado - A01379299
-
-- <a href="https://docs.google.com/document/d/1IZ8TRScMKt0GAUFSHS-wg9wTcwAZ3sTjz8jQtyeuovk/edit?usp=sharing">  Actividad Integradora </a>
+- `<a href="">`  Actividad Integradora `</a>`
 
 ### Problematica
-![robotCaja](https://user-images.githubusercontent.com/84719490/203209529-87f56590-807f-45b0-9d8b-2d1473e337b3.png)
 
+![robotCaja](https://user-images.githubusercontent.com/84719490/203209529-87f56590-807f-45b0-9d8b-2d1473e337b3.png)
 
 ¡Felicidades! Eres el orgulloso propietario de 5 robots nuevos y un almacén lleno de cajas. El dueño
 anterior del almacén lo dejó en completo desorden, por lo que depende de tus robots organizar las
@@ -38,4 +37,4 @@ no hay pilas de cajas.
 o Tiempo necesario hasta que todas las cajas están en pilas de máximo 5 cajas.
 o Número de movimientos realizados por todos los robots.
 o Analiza si existe una estrategia que podría disminuir el tiempo dedicado, así como
-la cantidad de movimientos realizados. ¿Cómo sería? Descríbela. 
+la cantidad de movimientos realizados. ¿Cómo sería? Descríbela.

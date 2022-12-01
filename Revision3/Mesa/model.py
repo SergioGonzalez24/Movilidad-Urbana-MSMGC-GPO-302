@@ -14,7 +14,6 @@ from random import choice, randrange
 # Authors:
 #           Sergio Manuel Gonzalez Vargas - A01745446
 #           Gilberto André García Gaytán - A01753176
-#           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
 # -----------------------------------------------------------
 
@@ -112,6 +111,7 @@ class MapaModel(Model):
             self.grid.place_agent(AgenteMcqueen, inicio)
             self.schedule.add(AgenteMcqueen)
             self.ID_Mcqueen += 1
+            
             # Collecting the data from the model.
             self.datacollector = DataCollector(
                 agent_reporters={"Moves": "moves"})

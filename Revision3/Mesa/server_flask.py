@@ -11,7 +11,6 @@ import os
 # Authors:
 #           Sergio Manuel Gonzalez Vargas - A01745446
 #           Gilberto André García Gaytán - A01753176
-#           Fernando Ortiz Saldaña - A01376737
 #           Ricardo Ramírez Condado - A01379299
 # ------------------------------------------------------------
 
