@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------
-# - Entrega Final --- agent.py
+# - Entrega Final -- agent.py
 #
 # Date: 02-Dec-2022
 # Authors:

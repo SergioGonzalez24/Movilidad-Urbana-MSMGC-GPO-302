@@ -1,6 +1,6 @@
 
 # -----------------------------------------------------------
-# - Entrega Final -- mesaServer.py
+# - Entrega Final - mesaServer.py
 #
 # Date: 02-Dec-2022
 # Authors:
