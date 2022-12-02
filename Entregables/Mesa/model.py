@@ -51,14 +51,14 @@ class MapaModel(Model):
         """
         self.coordenadas_destino = []
         self.ID_Mcqueen = 0
-        
+
         self.tiempo = tiempo  # Tiempo de Iteracion entre cambios de semaforos
 
         self.conductores = 0
 
         # Loading the dictionary from the json file.
         Diccionario = json.load(open("./Entregables/Mesa/Docs/mapDictionary.json")) # Para su visualizacion correcta, revisar que sea la ruta correcta de las imagenes.
-        
+
         # Reading the file and creating the grid.
         with open('./Entregables/Mesa/Docs/2022_base.txt') as baseFile: # Para su funcionamiento correcto, revisar que sea la ruta correcta del archivo a leer.
             lines = baseFile.readlines()
@@ -66,7 +66,7 @@ class MapaModel(Model):
             self.height = len(lines)
             self.grid = MultiGrid(self.width, self.height, torus = False)
             self.schedule = RandomActivation(self)
-            
+
             # Iterating through the lines of the file.
             for r, row in enumerate(lines):
                 # Iterating through the lines of the file.
@@ -90,14 +90,12 @@ class MapaModel(Model):
                         self.grid.place_agent(agent, (c, self.height - r - 1))
                         self.coordenadas_destino.append((c, self.height - r - 1))
                     # Creating a new agent of type Ruta66 and placing it in the grid.
-                    
-                    
+
                     elif columna == '.':
                         agent = Ruta66(f"r{r*self.width+c}", self, Diccionario[columna])
                         self.grid.place_agent(agent, (c, self.height - r - 1))
-                        
-                        
-                        
+
+   
         # Setting the number of agents and the running state of the model.
         self.num_agents = N
         self.running = True

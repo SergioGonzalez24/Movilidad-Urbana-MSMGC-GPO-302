@@ -91,14 +91,14 @@ class Mcqueen(Agent):
                     self.model.grid.move_agent(self, vecino_carro)
                     self.detenido = False
                     return
-                
+
             # Checking if the cell that the agent is in is a road.
             if Ruta66 == pasos[posicion_actual][0]:  # Cuchao
                 # Checking if the direction of the road is omni-directional, if it is, it gets the
                 # next cell in the direction of the car.
                 if mover_celda[posicion_actual][0].direction == "Omni":
                     f_paso = checa_entorno[movimiento[self.Direccion]]
-                
+
                 #If the has the same position in consecutive steps, it is stuck
                     try:
                         if self.pos == self.recorrido[-2]:
@@ -114,8 +114,8 @@ class Mcqueen(Agent):
                                 break
                     except:
                         self.detenido = False
-                  
-                           
+
+         
                     # Checking if the direction of the car is left or right, if it is, it is checking
                     # if the next cell is a car, if it is, it avoids the collision, if not, it checks
                     if self.Direccion == "Left" or self.Direccion == "Right":
@@ -124,8 +124,8 @@ class Mcqueen(Agent):
                                          (self.pos[0], self.pos[1]+1),
                                          (self.pos[0], self.pos[1]-1)],
                                         obtener_celda, 1)
-                      
-                      
+
+     
                     # Checking if the direction of the car is up or down, if it is, it is checking if the next cell is a
                     # car, if it is, it avoids the collision, if not, it checks if the next cell is a car, if it is, it
                     # avoids the collision, if not, it checks if the next cell is a car, if it is, it avoids the
@@ -145,14 +145,13 @@ class Mcqueen(Agent):
                 # so, it moves the agent to the next cell.
                 else:
                     f_paso = movimiento[mover_celda[posicion_actual][0].direction]
-                                            
+
                     if Semaforo == pasos[f_paso][0]:
                         if mover_celda[f_paso][0].state and Mcqueen not in pasos[f_paso]:
                             self.model.grid.move_agent(self,
                                                        checa_entorno[f_paso])
                             self.Direccion = mover_celda[posicion_actual][0].direction
-                             
-                
+
                         else:
                             self.detenido = True
                     # The above code is checking if the agent is in the same cell as the agent that is
@@ -162,7 +161,6 @@ class Mcqueen(Agent):
                         self.model.grid.move_agent(self, checa_entorno[f_paso])
                         self.Direccion = mover_celda[posicion_actual][0].direction
                         self.detenido = False
-                  
                     else:
                         self.detenido = True
             # The above code is checking if the agent is in the same cell as the McQueen agent. If it
@@ -186,7 +184,7 @@ class Mcqueen(Agent):
         # Creating a dictionary called movimiento.
         movimiento = {}
         for i in range(len(siguiente_paso)):
-           # Checking if the next step is to the right of the current position.
+            # Checking if the next step is to the right of the current position.
             if siguiente_paso[i][0] == self.pos[0]+1 and siguiente_paso[i][1] == self.pos[1]:
                 movimiento["Right"] = i
             # Assigning a value to a dictionary.
@@ -291,9 +289,6 @@ class Semaforo(Agent):
         """
         self.state = state
         self.timeToChange = timeToChange
-        
-    
-        
 
 
 class Destination(Agent):
