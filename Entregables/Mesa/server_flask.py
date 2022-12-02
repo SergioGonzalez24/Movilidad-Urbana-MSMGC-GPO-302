@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 import os
 
 # ----------------------------------------------------------
-# - Entrega Final -- model.py
+# - Entrega Final --- model.py
 #
 # Date: 02-Dec-2022
 # Authors:

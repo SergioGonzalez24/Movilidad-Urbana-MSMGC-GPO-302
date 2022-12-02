@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-#  - Entrega Final -- model.py
+#  - Entrega Final --- model.py
 #
 # Date: 2-Dec-2022
 # Authors:
