@@ -21,8 +21,9 @@ def runMesaFile():
 
 
 def runFlaskFile():
-    call(["python", "server_flask.py"])
-    
+    call(["python", ".\Entregables\EjecutableMesa\server_flask.py"])
+
+
 def runMcqueenFile():
     call(["./Entregables/EjecutableMcqueen/TrafficVisualization.exe"])
 
