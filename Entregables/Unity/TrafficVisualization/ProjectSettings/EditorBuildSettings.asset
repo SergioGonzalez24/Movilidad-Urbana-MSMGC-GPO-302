@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/00 Menu.unity
+    guid: c90acc5de5eafd94493d7148aaf347b2
+  - enabled: 1
+    path: Assets/Scenes/01 EscenaPrincipal.unity
+    guid: d19cd7be1a61292a4b6ffc8c78b7acc3
+  - enabled: 1
+    path: Assets/Scenes/02 Semaforo.unity
+    guid: 7a9b59205c12bad4ba337e05005433e9
+  - enabled: 1
+    path: Assets/Scenes/03 Avenida.unity
+    guid: df65efc9e4e6c5e44a3b23cda059cf86
+  - enabled: 1
+    path: Assets/Scenes/04 MapaProfe.unity
+    guid: 2977a6ae8587782499ba06fe126748e4
   m_configObjects: {}
