@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: random-json
+Version: 0.0.3
+Summary: Generate random JSON objects for testing purposes
+Home-page: https://github.com/maxtaco/python-random-json
+Author: Maxwell Krohn
+Author-email: themax@gmail.com

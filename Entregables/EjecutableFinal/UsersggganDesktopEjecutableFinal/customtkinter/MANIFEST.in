@@ -1,0 +1,4 @@
+include customtkinter/assets/*
+include customtkinter/assets/fonts/*
+include customtkinter/assets/fonts/Roboto/*
+include customtkinter/assets/themes/*

@@ -1,0 +1,8 @@
+..\..\..\..\..\Programs\Python\Python311\Lib\site-packages\subprocess.run.pth
+..\run\__init__.py
+..\run\__pycache__\__init__.cpython-311.pyc
+PKG-INFO
+SOURCES.txt
+dependency_links.txt
+not-zip-safe
+top_level.txt
