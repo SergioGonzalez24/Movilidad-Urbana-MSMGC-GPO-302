@@ -30,6 +30,10 @@
 
 ####  - Actividad Integradora
  - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/tree/main/ActividadIntegradora"> Actividad Integradora Documentación </a>
+ 
+ 
+ ####  - Manual de Usuario
+ - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Manual%20de%20Usuario%20TC2008B.pdf"> Manual </a>
   
 
 ### Problematica
