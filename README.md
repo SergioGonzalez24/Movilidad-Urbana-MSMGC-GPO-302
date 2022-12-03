@@ -17,7 +17,7 @@
 
 ### Liga de Archivos en Google Drive
 
-#### `<a href="https://drive.google.com/drive/folders/1z2ETYn4h0Xb2oYKgaC0iAb2sPr4sbUAe?usp=sharing">` Carpeta de Documentos `</a>`
+#### <a href="https://drive.google.com/drive/folders/1z2ETYn4h0Xb2oYKgaC0iAb2sPr4sbUAe?usp=sharing"> Carpeta de Documentos </a>
 
 ### Contenido del Proyecto
 
