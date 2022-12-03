@@ -25,10 +25,11 @@
  - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Revision%201.pdf"> Revision 1 </a>
   - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Revision%202.pdf"> Revision 2 </a>
   - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Revision%203.pdf"> Revision 3 </a>
+  - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/blob/main/Documentacion/Entregas%20Individuales/Evidencia%202.%20Avances%20y%20presentaci%C3%B3n%20del%20reto.pdf"> Documentación Final </a>
   
 
 ####  - Actividad Integradora
- - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/tree/main/ActividadIntegradora"> Revision 1 </a>
+ - <a href="https://github.com/SergioGonzalez24/Movilidad-Urbana-MSMGC-GPO-302/tree/main/ActividadIntegradora"> Actividad Integradora Documentación </a>
   
 
 ### Problematica
