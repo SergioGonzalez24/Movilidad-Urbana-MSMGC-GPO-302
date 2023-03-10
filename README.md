@@ -1,5 +1,3 @@
-# BRANCH DE TRABAJO PARA ENTREGA FINAL
-
 # Movilidad-Urbana-MSMGC-GPO-302
 
 <p align="center">
